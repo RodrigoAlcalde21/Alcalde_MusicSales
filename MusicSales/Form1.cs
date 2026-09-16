@@ -16,5 +16,30 @@ namespace MusicSales
         {
 
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtSongName.Clear();
+            txtSongCost.Clear();
+            txtNumberOfPlays.Clear();
+            lstOut.Items.Clear();
+            txtSongName.Focus();
+        }
+
+        private void lblSongName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCal_Click(object sender, EventArgs e)
+        {
+       //     lstOut.Items.Add((5 + 5) / 2);
+            btnClear.Focus();
+        }
     }
 }
