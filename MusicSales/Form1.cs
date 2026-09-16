@@ -11,5 +11,10 @@ namespace MusicSales
         {
 
         }
+
+        private void txtNumberOfPlays_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

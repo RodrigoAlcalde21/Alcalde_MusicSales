@@ -94,6 +94,7 @@
             txtNumberOfPlays.Name = "txtNumberOfPlays";
             txtNumberOfPlays.Size = new Size(125, 27);
             txtNumberOfPlays.TabIndex = 6;
+            txtNumberOfPlays.TextChanged += txtNumberOfPlays_TextChanged;
             // 
             // Form1
             // 
