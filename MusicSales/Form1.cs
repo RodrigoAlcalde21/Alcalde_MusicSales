@@ -38,7 +38,6 @@ namespace MusicSales
 
         private void btnCal_Click(object sender, EventArgs e)
         {
-       //     lstOut.Items.Add((5 + 5) / 2);
             btnClear.Focus();
         }
     }
