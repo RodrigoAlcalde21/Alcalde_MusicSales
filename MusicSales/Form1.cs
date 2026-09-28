@@ -38,7 +38,22 @@ namespace MusicSales
 
         private void btnCal_Click(object sender, EventArgs e)
         {
+            //input
+            string songName;
+            decimal songCost;
+            int numberOfPlays;
+
+            songName = txtSongName.Text.Trim();
+            songCost = decimal.Parse(txtSongCost.Text);
+            numberOfPlays = int.Parse(txtNumberOfPlays.Text);
+
+            //processing
             btnClear.Focus();
+
+            //output
+            lstOut.Items.Add("Song Name: " + songName);
+            lstOut.Items.Add("Song Cost: " + songCost.ToString("C"))
+            lstOut.Items.Add("Number of Plays: " +  numberOfPlays.ToString("N0"));
         }
     }
 }
