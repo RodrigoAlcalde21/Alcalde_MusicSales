@@ -30,10 +30,8 @@
         {
             lblTitle = new Label();
             lblSongName = new Label();
-            lblSongCost = new Label();
             lblNumberOfPlays = new Label();
             txtSongName = new TextBox();
-            txtSongCost = new TextBox();
             txtNumberOfPlays = new TextBox();
             btnCal = new Button();
             btnClear = new Button();
@@ -56,55 +54,43 @@
             // lblSongName
             // 
             lblSongName.AutoSize = true;
-            lblSongName.Location = new Point(80, 86);
+            lblSongName.Location = new Point(80, 91);
             lblSongName.Name = "lblSongName";
             lblSongName.Size = new Size(69, 15);
             lblSongName.TabIndex = 1;
             lblSongName.Text = "Song Name";
             lblSongName.Click += lblSongName_Click;
             // 
-            // lblSongCost
-            // 
-            lblSongCost.AutoSize = true;
-            lblSongCost.Location = new Point(80, 126);
-            lblSongCost.Name = "lblSongCost";
-            lblSongCost.Size = new Size(61, 15);
-            lblSongCost.TabIndex = 2;
-            lblSongCost.Text = "Song Cost";
-            // 
             // lblNumberOfPlays
             // 
             lblNumberOfPlays.AutoSize = true;
-            lblNumberOfPlays.Location = new Point(80, 163);
+            lblNumberOfPlays.Location = new Point(80, 145);
             lblNumberOfPlays.Name = "lblNumberOfPlays";
             lblNumberOfPlays.Size = new Size(95, 15);
             lblNumberOfPlays.TabIndex = 3;
             lblNumberOfPlays.Text = "Number of Plays";
+            lblNumberOfPlays.Click += lblNumberOfPlays_Click;
             // 
             // txtSongName
             // 
-            txtSongName.Location = new Point(265, 83);
+            txtSongName.Location = new Point(265, 91);
             txtSongName.Margin = new Padding(3, 2, 3, 2);
             txtSongName.Name = "txtSongName";
             txtSongName.Size = new Size(110, 23);
             txtSongName.TabIndex = 4;
-            // 
-            // txtSongCost
-            // 
-            txtSongCost.Location = new Point(265, 123);
-            txtSongCost.Margin = new Padding(3, 2, 3, 2);
-            txtSongCost.Name = "txtSongCost";
-            txtSongCost.Size = new Size(110, 23);
-            txtSongCost.TabIndex = 5;
+            txtSongName.Enter += txtSongName_Enter;
+            txtSongName.Leave += txtSongName_Leave;
             // 
             // txtNumberOfPlays
             // 
-            txtNumberOfPlays.Location = new Point(265, 160);
+            txtNumberOfPlays.Location = new Point(265, 145);
             txtNumberOfPlays.Margin = new Padding(3, 2, 3, 2);
             txtNumberOfPlays.Name = "txtNumberOfPlays";
             txtNumberOfPlays.Size = new Size(110, 23);
             txtNumberOfPlays.TabIndex = 6;
             txtNumberOfPlays.TextChanged += txtNumberOfPlays_TextChanged;
+            txtNumberOfPlays.Enter += txtNumberOfPlays_Enter;
+            txtNumberOfPlays.Leave += txtNumberOfPlays_Leave;
             // 
             // btnCal
             // 
@@ -112,7 +98,7 @@
             btnCal.Name = "btnCal";
             btnCal.Size = new Size(96, 71);
             btnCal.TabIndex = 8;
-            btnCal.Text = "Calculate & &Display";
+            btnCal.Text = "Calculate && &Display";
             btnCal.UseVisualStyleBackColor = true;
             btnCal.Click += btnCal_Click;
             // 
@@ -155,15 +141,14 @@
             Controls.Add(btnClear);
             Controls.Add(btnCal);
             Controls.Add(txtNumberOfPlays);
-            Controls.Add(txtSongCost);
             Controls.Add(txtSongName);
             Controls.Add(lblNumberOfPlays);
-            Controls.Add(lblSongCost);
             Controls.Add(lblSongName);
             Controls.Add(lblTitle);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Rodrigo Alcalde";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -172,10 +157,8 @@
 
         private Label lblTitle;
         private Label lblSongName;
-        private Label lblSongCost;
         private Label lblNumberOfPlays;
         private TextBox txtSongName;
-        private TextBox txtSongCost;
         private TextBox txtNumberOfPlays;
         private Button btnCal;
         private Button btnClear;
