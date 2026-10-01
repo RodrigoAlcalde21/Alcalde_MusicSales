@@ -41,18 +41,21 @@ namespace MusicSales
             string songName;
             decimal songCost = .5m;
             int numberOfPlays;
+            decimal totalPayment;
 
             songName = txtSongName.Text.Trim();
 
             numberOfPlays = int.Parse(txtNumberOfPlays.Text);
 
             //processing
+            totalPayment = songCost * numberOfPlays;
             btnClear.Focus();
 
             //output
             lstOut.Items.Add("Song Name: " + songName);
             lstOut.Items.Add("Song Cost: " + songCost.ToString("C"));
             lstOut.Items.Add("Number of Plays: " + numberOfPlays.ToString("N0"));
+            lstOut.Items.Add("Total Payment: " + totalPayment.ToString("C"));
         }
 
         private void txtSongName_Enter(object sender, EventArgs e)
