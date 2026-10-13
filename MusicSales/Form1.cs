@@ -43,9 +43,13 @@ namespace MusicSales
             int numberOfPlays;
             decimal totalPayment;
 
-            songName = txtSongName.Text.Trim();
+          
 
+            songName = txtSongName.Text.Trim();
             numberOfPlays = int.Parse(txtNumberOfPlays.Text);
+
+            //create object
+            MusicSale sale = new MusicSale(songName, numberOfPlays, songCost);
 
             //processing
             totalPayment = songCost * numberOfPlays;
