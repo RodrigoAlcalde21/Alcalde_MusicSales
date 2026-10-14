@@ -37,29 +37,25 @@ namespace MusicSales
 
         private void btnCal_Click(object sender, EventArgs e)
         {
-            //input
-            string songName;
-            decimal songCost = .5m;
-            int numberOfPlays;
-            decimal totalPayment;
-
-          
-
-            songName = txtSongName.Text.Trim();
-            numberOfPlays = int.Parse(txtNumberOfPlays.Text);
-
             //create object
-            MusicSale sale = new MusicSale(songName, numberOfPlays, songCost);
+            MusicSale sale = new MusicSale();
+
+
+            //input
+            sale.SongName = txtSongName.Text.Trim();
+            sale.NumberOfPlays = int.Parse(txtNumberOfPlays.Text);
+            sale.SongCost = .5m;
+
 
             //processing
-            totalPayment = songCost * numberOfPlays;
+            sale.CalculateTotalPayment();
             btnClear.Focus();
 
             //output
-            lstOut.Items.Add("Song Name: " + songName);
-            lstOut.Items.Add("Song Cost: " + songCost.ToString("C"));
-            lstOut.Items.Add("Number of Plays: " + numberOfPlays.ToString("N0"));
-            lstOut.Items.Add("Total Payment: " + totalPayment.ToString("C"));
+            lstOut.Items.Add("Song Name: " + sale.SongName);
+            lstOut.Items.Add("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
+            lstOut.Items.Add("Song Cost: " + sale.SongCost.ToString("C"));
+            lstOut.Items.Add("Total Payment: " + sale.TotalPayment.ToString("C"));
         }
 
         private void txtSongName_Enter(object sender, EventArgs e)

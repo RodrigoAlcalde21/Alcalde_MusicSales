@@ -125,9 +125,9 @@
             // lstOut
             // 
             lstOut.FormattingEnabled = true;
-            lstOut.Location = new Point(119, 211);
+            lstOut.Location = new Point(80, 215);
             lstOut.Name = "lstOut";
-            lstOut.Size = new Size(236, 109);
+            lstOut.Size = new Size(347, 109);
             lstOut.TabIndex = 11;
             lstOut.TabStop = false;
             // 

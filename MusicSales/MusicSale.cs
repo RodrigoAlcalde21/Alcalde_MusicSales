@@ -43,4 +43,18 @@ public class MusicSale
         NumberOfPlays = numberOfPlays;
         SongCost = songCost;
     }
+
+    public void CalculateTotalPayment()
+    {
+        TotalPayment = SongCost * NumberOfPlays;
+    }
+
+    //ToString method
+    public override string ToString()
+    {
+        return "Song Name: " + SongName +
+            "\nNumber of Plays: " + NumberOfPlays.ToString("N0") +
+            "\nSong Cost: " + SongCost.ToString("C") +
+            "\nTotal Payment: " + TotalPayment.ToString("C");
+    }
 }
