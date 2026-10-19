@@ -87,5 +87,10 @@ namespace MusicSales
         {
             txtNumberOfPlays.BackColor = Color.White;
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
