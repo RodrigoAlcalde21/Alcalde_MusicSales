@@ -32,30 +32,56 @@ namespace MusicSales
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result;
+
+            result = MessageBox.Show(
+                "Are you sure you want to quit?",
+                "Quit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void btnCal_Click(object sender, EventArgs e)
         {
+            lstOut.Items.Clear();
+
             //create object
             MusicSale sale = new MusicSale();
+
+            int numberOfPlays;
+            bool numberOfPlaysValid;
 
 
             //input
             sale.SongName = txtSongName.Text.Trim();
-            sale.NumberOfPlays = int.Parse(txtNumberOfPlays.Text);
             sale.SongCost = .5m;
 
+            numberOfPlaysValid = int.TryParse(txtNumberOfPlays.Text, out numberOfPlays);
 
-            //processing
-            sale.CalculateTotalPayment();
+            if (numberOfPlaysValid)
+            {
+                sale.NumberOfPlays = numberOfPlays;
+
+                //processing
+                sale.CalculateTotalPayment();
+
+                //output
+                lstOut.Items.Add("Song Name: " + sale.SongName);
+                lstOut.Items.Add("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
+                lstOut.Items.Add("Song Cost: " + sale.SongCost.ToString("C"));
+                lstOut.Items.Add("Total Payment: " + sale.TotalPayment.ToString("C"));
+            }
+            else
+            {
+                lstOut.Items.Add("Error: Number of Plays must be a valid number.");
+            }
+
             btnClear.Focus();
-
-            //output
-            lstOut.Items.Add("Song Name: " + sale.SongName);
-            lstOut.Items.Add("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
-            lstOut.Items.Add("Song Cost: " + sale.SongCost.ToString("C"));
-            lstOut.Items.Add("Total Payment: " + sale.TotalPayment.ToString("C"));
         }
 
         private void txtSongName_Enter(object sender, EventArgs e)
@@ -88,9 +114,5 @@ namespace MusicSales
             txtNumberOfPlays.BackColor = Color.White;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
