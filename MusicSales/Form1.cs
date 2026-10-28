@@ -50,25 +50,22 @@ namespace MusicSales
         {
             lstOut.Items.Clear();
 
-            //create object
-            MusicSale sale = new MusicSale();
-
+            string songName;
+            decimal songCost = .5m;
             int numberOfPlays;
             bool numberOfPlaysValid;
 
 
+
             //input
-            sale.SongName = txtSongName.Text.Trim();
-            sale.SongCost = .5m;
+            songName = txtSongName.Text.Trim();
 
             numberOfPlaysValid = int.TryParse(txtNumberOfPlays.Text, out numberOfPlays);
 
             if (numberOfPlaysValid)
             {
-                sale.NumberOfPlays = numberOfPlays;
-
-                //processing
-                sale.CalculateTotalPayment();
+                //create object
+                MusicSale sale = new MusicSale(songName, numberOfPlays, songCost);
 
                 //output
                 lstOut.Items.Add("Song Name: " + sale.SongName);

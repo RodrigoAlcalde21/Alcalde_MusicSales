@@ -42,6 +42,9 @@ public class MusicSale
         SongName = songName;
         NumberOfPlays = numberOfPlays;
         SongCost = songCost;
+
+        CalculateTotalPayment();
+
     }
 
     public void CalculateTotalPayment()
