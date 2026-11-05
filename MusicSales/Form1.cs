@@ -2,6 +2,12 @@ namespace MusicSales
 {
     public partial class Form1 : Form
     {
+        private string saleType = "";
+
+        private const string STANDARD_TYPE = "Standard";
+        private const string PREMIUM_TYPE = "Premium";
+        private const string EXCLUSIVE_TYPE = "Exclusive";
+
         public Form1()
         {
             InitializeComponent();
@@ -51,7 +57,7 @@ namespace MusicSales
             lstOut.Items.Clear();
 
             string songName;
-            decimal songCost = .5m;
+            decimal songCost = .50m;
             int numberOfPlays;
             bool numberOfPlaysValid;
 
@@ -64,10 +70,31 @@ namespace MusicSales
 
             if (numberOfPlaysValid)
             {
+
+                switch (saleType)
+                {
+                    case STANDARD_TYPE:
+                        songCost = .50m;
+                        break;
+
+                    case PREMIUM_TYPE:
+                        songCost = .75m;
+                        break;
+
+                    case EXCLUSIVE_TYPE:
+                        songCost = 1.00m;
+                        break;
+
+                    default:
+                        songCost = .50m;
+                        break;
+                }
+
                 //create object
                 MusicSale sale = new MusicSale(songName, numberOfPlays, songCost);
 
                 //output
+                lstOut.Items.Add("Sale Type: " + saleType);
                 lstOut.Items.Add("Song Name: " + sale.SongName);
                 lstOut.Items.Add("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
                 lstOut.Items.Add("Song Cost: " + sale.SongCost.ToString("C"));
@@ -93,7 +120,7 @@ namespace MusicSales
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            rdoStandard.Checked = true;
         }
 
         private void lblNumberOfPlays_Click(object sender, EventArgs e)
@@ -111,5 +138,28 @@ namespace MusicSales
             txtNumberOfPlays.BackColor = Color.White;
         }
 
+        private void rdoStandard_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoStandard.Checked)
+            {
+                saleType = STANDARD_TYPE;
+            }
+        }
+
+        private void rdoPremium_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoPremium.Checked)
+            {
+                saleType = PREMIUM_TYPE;
+            }
+        }
+
+        private void rdoExclusive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoExclusive.Checked)
+            {
+                saleType = EXCLUSIVE_TYPE;
+            }
+        }
     }
 }
