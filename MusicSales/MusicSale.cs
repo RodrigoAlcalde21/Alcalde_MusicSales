@@ -1,6 +1,10 @@
 ﻿
 public class MusicSale
 {
+    public const string STANDARD_TYPE = "Standard";
+    public const string PREMIUM_TYPE = "Premium";
+    public const string EXCLUSIVE_TYPE = "Exclusive";
+
     private decimal songCost;
     private decimal totalPayment;
 
@@ -37,11 +41,29 @@ public class MusicSale
         SongName = "";
     }
 
-    public MusicSale(string songName, int numberOfPlays, decimal songCost)
+    public MusicSale(string songName, int numberOfPlays, string saleType)
     {
         SongName = songName;
         NumberOfPlays = numberOfPlays;
-        SongCost = songCost;
+
+        switch (saleType)
+        {
+            case STANDARD_TYPE:
+                SongCost = .50m;
+                break;
+
+            case PREMIUM_TYPE:
+                SongCost = .75m;
+                break;
+
+            case EXCLUSIVE_TYPE:
+                SongCost = 1.00m;
+                break;
+
+            default:
+                SongCost = .50m;
+                break;
+        }
 
         CalculateTotalPayment();
 

@@ -4,10 +4,6 @@ namespace MusicSales
     {
         private string saleType = "";
 
-        private const string STANDARD_TYPE = "Standard";
-        private const string PREMIUM_TYPE = "Premium";
-        private const string EXCLUSIVE_TYPE = "Exclusive";
-
         public Form1()
         {
             InitializeComponent();
@@ -57,7 +53,6 @@ namespace MusicSales
             lstOut.Items.Clear();
 
             string songName;
-            decimal songCost = .50m;
             int numberOfPlays;
             bool numberOfPlaysValid;
 
@@ -71,27 +66,9 @@ namespace MusicSales
             if (numberOfPlaysValid)
             {
 
-                switch (saleType)
-                {
-                    case STANDARD_TYPE:
-                        songCost = .50m;
-                        break;
-
-                    case PREMIUM_TYPE:
-                        songCost = .75m;
-                        break;
-
-                    case EXCLUSIVE_TYPE:
-                        songCost = 1.00m;
-                        break;
-
-                    default:
-                        songCost = .50m;
-                        break;
-                }
 
                 //create object
-                MusicSale sale = new MusicSale(songName, numberOfPlays, songCost);
+                MusicSale sale = new MusicSale(songName, numberOfPlays, saleType);
 
                 //output
                 lstOut.Items.Add("Sale Type: " + saleType);
@@ -142,7 +119,7 @@ namespace MusicSales
         {
             if (rdoStandard.Checked)
             {
-                saleType = STANDARD_TYPE;
+                saleType = MusicSale.STANDARD_TYPE;
             }
         }
 
@@ -150,7 +127,7 @@ namespace MusicSales
         {
             if (rdoPremium.Checked)
             {
-                saleType = PREMIUM_TYPE;
+                saleType = MusicSale.PREMIUM_TYPE;
             }
         }
 
@@ -158,7 +135,7 @@ namespace MusicSales
         {
             if (rdoExclusive.Checked)
             {
-                saleType = EXCLUSIVE_TYPE;
+                saleType = MusicSale.EXCLUSIVE_TYPE;
             }
         }
     }

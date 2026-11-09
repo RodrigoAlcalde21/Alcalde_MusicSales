@@ -49,9 +49,9 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = Color.Blue;
-            lblTitle.Location = new Point(243, 12);
+            lblTitle.Location = new Point(213, 9);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(138, 32);
+            lblTitle.Size = new Size(110, 25);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Music Sales";
             lblTitle.Click += label1_Click;
@@ -59,9 +59,9 @@
             // lblSongName
             // 
             lblSongName.AutoSize = true;
-            lblSongName.Location = new Point(91, 161);
+            lblSongName.Location = new Point(80, 121);
             lblSongName.Name = "lblSongName";
-            lblSongName.Size = new Size(87, 20);
+            lblSongName.Size = new Size(69, 15);
             lblSongName.TabIndex = 1;
             lblSongName.Text = "Song Name";
             lblSongName.Click += lblSongName_Click;
@@ -69,27 +69,29 @@
             // lblNumberOfPlays
             // 
             lblNumberOfPlays.AutoSize = true;
-            lblNumberOfPlays.Location = new Point(91, 211);
+            lblNumberOfPlays.Location = new Point(80, 158);
             lblNumberOfPlays.Name = "lblNumberOfPlays";
-            lblNumberOfPlays.Size = new Size(118, 20);
+            lblNumberOfPlays.Size = new Size(95, 15);
             lblNumberOfPlays.TabIndex = 3;
             lblNumberOfPlays.Text = "Number of Plays";
             lblNumberOfPlays.Click += lblNumberOfPlays_Click;
             // 
             // txtSongName
             // 
-            txtSongName.Location = new Point(303, 154);
+            txtSongName.Location = new Point(265, 116);
+            txtSongName.Margin = new Padding(3, 2, 3, 2);
             txtSongName.Name = "txtSongName";
-            txtSongName.Size = new Size(125, 27);
+            txtSongName.Size = new Size(110, 23);
             txtSongName.TabIndex = 4;
             txtSongName.Enter += txtSongName_Enter;
             txtSongName.Leave += txtSongName_Leave;
             // 
             // txtNumberOfPlays
             // 
-            txtNumberOfPlays.Location = new Point(303, 208);
+            txtNumberOfPlays.Location = new Point(265, 156);
+            txtNumberOfPlays.Margin = new Padding(3, 2, 3, 2);
             txtNumberOfPlays.Name = "txtNumberOfPlays";
-            txtNumberOfPlays.Size = new Size(125, 27);
+            txtNumberOfPlays.Size = new Size(110, 23);
             txtNumberOfPlays.TabIndex = 6;
             txtNumberOfPlays.TextChanged += txtNumberOfPlays_TextChanged;
             txtNumberOfPlays.Enter += txtNumberOfPlays_Enter;
@@ -97,10 +99,9 @@
             // 
             // btnCal
             // 
-            btnCal.Location = new Point(39, 477);
-            btnCal.Margin = new Padding(3, 4, 3, 4);
+            btnCal.Location = new Point(34, 358);
             btnCal.Name = "btnCal";
-            btnCal.Size = new Size(110, 95);
+            btnCal.Size = new Size(96, 71);
             btnCal.TabIndex = 8;
             btnCal.Text = "Calculate && &Display";
             btnCal.UseVisualStyleBackColor = true;
@@ -108,10 +109,9 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(233, 477);
-            btnClear.Margin = new Padding(3, 4, 3, 4);
+            btnClear.Location = new Point(204, 358);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(103, 95);
+            btnClear.Size = new Size(90, 71);
             btnClear.TabIndex = 9;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -119,10 +119,9 @@
             // 
             // btnQuit
             // 
-            btnQuit.Location = new Point(424, 477);
-            btnQuit.Margin = new Padding(3, 4, 3, 4);
+            btnQuit.Location = new Point(371, 358);
             btnQuit.Name = "btnQuit";
-            btnQuit.Size = new Size(101, 95);
+            btnQuit.Size = new Size(88, 71);
             btnQuit.TabIndex = 10;
             btnQuit.Text = "&Quit";
             btnQuit.UseVisualStyleBackColor = true;
@@ -131,10 +130,9 @@
             // lstOut
             // 
             lstOut.FormattingEnabled = true;
-            lstOut.Location = new Point(91, 287);
-            lstOut.Margin = new Padding(3, 4, 3, 4);
+            lstOut.Location = new Point(80, 215);
             lstOut.Name = "lstOut";
-            lstOut.Size = new Size(396, 144);
+            lstOut.Size = new Size(347, 109);
             lstOut.TabIndex = 11;
             lstOut.TabStop = false;
             // 
@@ -143,9 +141,11 @@
             grpSaletype.Controls.Add(rdoExclusive);
             grpSaletype.Controls.Add(rdoPremium);
             grpSaletype.Controls.Add(rdoStandard);
-            grpSaletype.Location = new Point(73, 57);
+            grpSaletype.Location = new Point(64, 43);
+            grpSaletype.Margin = new Padding(3, 2, 3, 2);
             grpSaletype.Name = "grpSaletype";
-            grpSaletype.Size = new Size(439, 78);
+            grpSaletype.Padding = new Padding(3, 2, 3, 2);
+            grpSaletype.Size = new Size(384, 58);
             grpSaletype.TabIndex = 12;
             grpSaletype.TabStop = false;
             grpSaletype.Text = "Sale Type";
@@ -153,9 +153,10 @@
             // rdoExclusive
             // 
             rdoExclusive.AutoSize = true;
-            rdoExclusive.Location = new Point(316, 37);
+            rdoExclusive.Location = new Point(276, 28);
+            rdoExclusive.Margin = new Padding(3, 2, 3, 2);
             rdoExclusive.Name = "rdoExclusive";
-            rdoExclusive.Size = new Size(89, 24);
+            rdoExclusive.Size = new Size(73, 19);
             rdoExclusive.TabIndex = 2;
             rdoExclusive.TabStop = true;
             rdoExclusive.Text = "Exclusive";
@@ -165,9 +166,10 @@
             // rdoPremium
             // 
             rdoPremium.AutoSize = true;
-            rdoPremium.Location = new Point(160, 37);
+            rdoPremium.Location = new Point(140, 28);
+            rdoPremium.Margin = new Padding(3, 2, 3, 2);
             rdoPremium.Name = "rdoPremium";
-            rdoPremium.Size = new Size(89, 24);
+            rdoPremium.Size = new Size(74, 19);
             rdoPremium.TabIndex = 1;
             rdoPremium.TabStop = true;
             rdoPremium.Text = "Premium";
@@ -177,9 +179,10 @@
             // rdoStandard
             // 
             rdoStandard.AutoSize = true;
-            rdoStandard.Location = new Point(7, 37);
+            rdoStandard.Location = new Point(6, 28);
+            rdoStandard.Margin = new Padding(3, 2, 3, 2);
             rdoStandard.Name = "rdoStandard";
-            rdoStandard.Size = new Size(90, 24);
+            rdoStandard.Size = new Size(72, 19);
             rdoStandard.TabIndex = 0;
             rdoStandard.TabStop = true;
             rdoStandard.Text = "Standard";
@@ -188,9 +191,9 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(670, 604);
+            ClientSize = new Size(525, 505);
             Controls.Add(grpSaletype);
             Controls.Add(lstOut);
             Controls.Add(btnQuit);
@@ -201,6 +204,7 @@
             Controls.Add(lblNumberOfPlays);
             Controls.Add(lblSongName);
             Controls.Add(lblTitle);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Rodrigo Alcalde";
             Load += Form1_Load;
