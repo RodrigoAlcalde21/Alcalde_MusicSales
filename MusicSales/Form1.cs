@@ -1,8 +1,10 @@
+using System.IO;
 namespace MusicSales
 {
     public partial class Form1 : Form
     {
         private string saleType = "";
+        private string fileName = "MusicSalesLog.txt";
 
         public Form1()
         {
@@ -71,11 +73,7 @@ namespace MusicSales
                 MusicSale sale = new MusicSale(songName, numberOfPlays, saleType);
 
                 //output
-                lstOut.Items.Add("Sale Type: " + saleType);
-                lstOut.Items.Add("Song Name: " + sale.SongName);
-                lstOut.Items.Add("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
-                lstOut.Items.Add("Song Cost: " + sale.SongCost.ToString("C"));
-                lstOut.Items.Add("Total Payment: " + sale.TotalPayment.ToString("C"));
+                WriteTransaction(sale);
             }
             else
             {
@@ -83,6 +81,30 @@ namespace MusicSales
             }
 
             btnClear.Focus();
+        }
+
+        private void WriteTransaction(MusicSale sale)
+        {
+            StreamWriter sw;
+
+            sw = File.AppendText(fileName);
+
+            sw.WriteLine("----- New Transaction -----");
+            sw.WriteLine("Date and Time: " + DateTime.Now.ToString());
+            sw.WriteLine("Sale Type: " + saleType);
+            sw.WriteLine("Song Name: " + sale.SongName);
+            sw.WriteLine("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
+            sw.WriteLine("Song Cost: " + sale.SongCost.ToString("C"));
+            sw.WriteLine("Total Payment: " + sale.TotalPayment.ToString("C"));
+            sw.WriteLine("");
+
+            sw.Close();
+
+            lstOut.Items.Add("Sale Type: " + saleType);
+            lstOut.Items.Add("Song Name: " + sale.SongName);
+            lstOut.Items.Add("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
+            lstOut.Items.Add("Song Cost: " + sale.SongCost.ToString("C"));
+            lstOut.Items.Add("Total Payment: " + sale.TotalPayment.ToString("C"));
         }
 
         private void txtSongName_Enter(object sender, EventArgs e)
