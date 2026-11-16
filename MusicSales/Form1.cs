@@ -5,7 +5,12 @@ namespace MusicSales
     {
         private string saleType = "";
         private string fileName = "MusicSalesLog.txt";
+        private string configFileName = "MusicSalesConfig.txt";
 
+        private decimal standardCost;
+        private decimal premiumCost;
+        private decimal exclusiveCost;
+  
         public Form1()
         {
             InitializeComponent();
@@ -70,7 +75,7 @@ namespace MusicSales
 
 
                 //create object
-                MusicSale sale = new MusicSale(songName, numberOfPlays, saleType);
+                MusicSale sale = new MusicSale(songName, numberOfPlays, saleType, standardCost, premiumCost, exclusiveCost);
 
                 //output
                 WriteTransaction(sale);
@@ -122,6 +127,39 @@ namespace MusicSales
         private void Form1_Load(object sender, EventArgs e)
         {
             rdoStandard.Checked = true;
+
+            StreamReader sr;
+            DialogResult result;
+
+            try
+            {
+                sr = File.OpenText(configFileName);
+
+                decimal.TryParse(sr.ReadLine(), out standardCost);
+                decimal.TryParse(sr.ReadLine(), out premiumCost);
+                decimal.TryParse(sr.ReadLine(), out exclusiveCost);
+
+                sr.Close();
+            }
+            catch
+            {
+                do
+                {
+                    result = openFileDialog1.ShowDialog();
+
+                } while (result != DialogResult.OK);
+
+                configFileName = openFileDialog1.FileName;
+
+                sr = File.OpenText(configFileName);
+
+                decimal.TryParse(sr.ReadLine(), out standardCost);
+                decimal.TryParse(sr.ReadLine(), out premiumCost);
+                decimal.TryParse(sr.ReadLine(), out exclusiveCost);
+
+                sr.Close();
+
+            }
         }
 
         private void lblNumberOfPlays_Click(object sender, EventArgs e)

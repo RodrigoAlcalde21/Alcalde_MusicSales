@@ -41,7 +41,7 @@ public class MusicSale
         SongName = "";
     }
 
-    public MusicSale(string songName, int numberOfPlays, string saleType)
+    public MusicSale(string songName, int numberOfPlays, string saleType, decimal standardCost, decimal premiumCost, decimal exclusiveCost)
     {
         SongName = songName;
         NumberOfPlays = numberOfPlays;
@@ -49,19 +49,19 @@ public class MusicSale
         switch (saleType)
         {
             case STANDARD_TYPE:
-                SongCost = .50m;
+                SongCost = standardCost;
                 break;
 
             case PREMIUM_TYPE:
-                SongCost = .75m;
+                SongCost = premiumCost;
                 break;
 
             case EXCLUSIVE_TYPE:
-                SongCost = 1.00m;
+                SongCost = exclusiveCost;
                 break;
 
             default:
-                SongCost = .50m;
+                SongCost = standardCost;
                 break;
         }
 

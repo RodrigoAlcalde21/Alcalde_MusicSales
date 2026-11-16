@@ -41,6 +41,7 @@
             rdoExclusive = new RadioButton();
             rdoPremium = new RadioButton();
             rdoStandard = new RadioButton();
+            openFileDialog1 = new OpenFileDialog();
             grpSaletype.SuspendLayout();
             SuspendLayout();
             // 
@@ -189,6 +190,10 @@
             rdoStandard.UseVisualStyleBackColor = true;
             rdoStandard.CheckedChanged += rdoStandard_CheckedChanged;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -229,5 +234,6 @@
         private RadioButton rdoStandard;
         private RadioButton rdoExclusive;
         private RadioButton rdoPremium;
+        private OpenFileDialog openFileDialog1;
     }
 }
