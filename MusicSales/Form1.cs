@@ -100,6 +100,8 @@ namespace MusicSales
 
             sw.Close();
 
+            lstOut.Items.Add("----- New Transaction -----");
+            lstOut.Items.Add("Date and Time: " + DateTime.Now.ToString());
             lstOut.Items.Add("Sale Type: " + saleType);
             lstOut.Items.Add("Song Name: " + sale.SongName);
             lstOut.Items.Add("Number of Plays: " + sale.NumberOfPlays.ToString("N0"));
