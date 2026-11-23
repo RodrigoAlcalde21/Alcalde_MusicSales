@@ -5,19 +5,23 @@ public class MusicSale
     public const string PREMIUM_TYPE = "Premium";
     public const string EXCLUSIVE_TYPE = "Exclusive";
 
+    // Prices shared by all transactions
+    public static decimal StandardCost { get; set; }
+    public static decimal PremiumCost { get; set; }
+    public static decimal ExclusiveCost { get; set; }
+
     private decimal songCost;
     private decimal totalPayment;
 
-    public string SongName {  get; set; }
-
-    public int NumberOfPlays {  get; set; }
+    public string SongName { get; set; }
+    public int NumberOfPlays { get; set; }
 
     public decimal SongCost
     {
         get { return songCost; }
         set
         {
-            if (value >  0)
+            if (value > 0)
             {
                 songCost = value;
             }
@@ -29,7 +33,7 @@ public class MusicSale
         get { return totalPayment; }
         private set
         {
-            if (value > 0)
+            if (value >= 0)
             {
                 totalPayment = value;
             }
@@ -41,7 +45,7 @@ public class MusicSale
         SongName = "";
     }
 
-    public MusicSale(string songName, int numberOfPlays, string saleType, decimal standardCost, decimal premiumCost, decimal exclusiveCost)
+    public MusicSale(string songName, int numberOfPlays, string saleType)
     {
         SongName = songName;
         NumberOfPlays = numberOfPlays;
@@ -49,24 +53,23 @@ public class MusicSale
         switch (saleType)
         {
             case STANDARD_TYPE:
-                SongCost = standardCost;
+                SongCost = StandardCost;
                 break;
 
             case PREMIUM_TYPE:
-                SongCost = premiumCost;
+                SongCost = PremiumCost;
                 break;
 
             case EXCLUSIVE_TYPE:
-                SongCost = exclusiveCost;
+                SongCost = ExclusiveCost;
                 break;
 
             default:
-                SongCost = standardCost;
+                SongCost = StandardCost;
                 break;
         }
 
         CalculateTotalPayment();
-
     }
 
     public void CalculateTotalPayment()
@@ -74,7 +77,6 @@ public class MusicSale
         TotalPayment = SongCost * NumberOfPlays;
     }
 
-    //ToString method
     public override string ToString()
     {
         return "Song Name: " + SongName +

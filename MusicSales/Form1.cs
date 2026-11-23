@@ -7,10 +7,6 @@ namespace MusicSales
         private string fileName = "MusicSalesLog.txt";
         private string configFileName = "MusicSalesConfig.txt";
 
-        private decimal standardCost;
-        private decimal premiumCost;
-        private decimal exclusiveCost;
-  
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +27,7 @@ namespace MusicSales
             txtSongName.Clear();
             txtNumberOfPlays.Clear();
             lstOut.Items.Clear();
+            rdoStandard.Checked = true;
             txtSongName.Focus();
         }
 
@@ -57,13 +54,10 @@ namespace MusicSales
 
         private void btnCal_Click(object sender, EventArgs e)
         {
-            lstOut.Items.Clear();
 
             string songName;
             int numberOfPlays;
             bool numberOfPlaysValid;
-
-
 
             //input
             songName = txtSongName.Text.Trim();
@@ -75,7 +69,7 @@ namespace MusicSales
 
 
                 //create object
-                MusicSale sale = new MusicSale(songName, numberOfPlays, saleType, standardCost, premiumCost, exclusiveCost);
+                MusicSale sale = new MusicSale(songName, numberOfPlays, saleType);
 
                 //output
                 WriteTransaction(sale);
@@ -128,40 +122,75 @@ namespace MusicSales
         {
             rdoStandard.Checked = true;
 
-            StreamReader sr;
-            DialogResult result;
+            StreamReader? sr = null;
+
+            if (!File.Exists(configFileName))
+            {
+                MessageBox.Show(
+                    "The configuration file was not found. Please select the file.",
+                    "Configuration File");
+
+                DialogResult result = openFileDialog1.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    configFileName = openFileDialog1.FileName;
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "A configuration file is required. The program will close.");
+
+                    this.Close();
+                    return;
+                }
+            }
 
             try
             {
                 sr = File.OpenText(configFileName);
 
-                decimal.TryParse(sr.ReadLine(), out standardCost);
-                decimal.TryParse(sr.ReadLine(), out premiumCost);
-                decimal.TryParse(sr.ReadLine(), out exclusiveCost);
+                decimal standard;
+                decimal premium;
+                decimal exclusive;
 
-                sr.Close();
-            }
-            catch
-            {
-                do
+                bool standardValid = decimal.TryParse(sr.ReadLine(), out standard);
+                bool premiumValid = decimal.TryParse(sr.ReadLine(), out premium);
+                bool exclusiveValid = decimal.TryParse(sr.ReadLine(), out exclusive);
+
+                if (standardValid && premiumValid && exclusiveValid &&
+                    standard > 0 && premium > 0 && exclusive > 0)
                 {
-                    result = openFileDialog1.ShowDialog();
+                    MusicSale.StandardCost = standard;
+                    MusicSale.PremiumCost = premium;
+                    MusicSale.ExclusiveCost = exclusive;
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "The configuration file contains invalid prices.",
+                        "Configuration Error");
 
-                } while (result != DialogResult.OK);
+                    this.Close();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error reading configuration file: " + ex.Message,
+                    "File Error");
 
-                configFileName = openFileDialog1.FileName;
-
-                sr = File.OpenText(configFileName);
-
-                decimal.TryParse(sr.ReadLine(), out standardCost);
-                decimal.TryParse(sr.ReadLine(), out premiumCost);
-                decimal.TryParse(sr.ReadLine(), out exclusiveCost);
-
-                sr.Close();
-
+                this.Close();
+            }
+            finally
+            {
+                if (sr != null)
+                {
+                    sr.Close();
+                }
             }
         }
-
         private void lblNumberOfPlays_Click(object sender, EventArgs e)
         {
 
